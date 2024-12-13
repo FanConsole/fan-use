@@ -1,0 +1,53 @@
+{
+	"name": "fan-use",
+	"private": true,
+	"version": "0.0.15",
+	"type": "module",
+	"files": [
+		"dist",
+		"uniapp"
+	],
+	"main": "dist/index.umd.js",
+	"module": "dist/index.es.js",
+	"typings": "dist/index.d.ts",
+	"exports": {
+		".": {
+			"import": "./dist/index.es.js",
+			"require": "./dist/index.umd.js",
+			"types": "./dist/index.d.ts"
+		},
+		"./uniapp": {
+			"import": "./uniapp/index.es.js",
+			"require": "./uniapp/index.umd.js",
+			"types": "./uniapp/index.d.ts"
+		}
+	},
+	"scripts": {
+		"dev": "vite --port=8088 --host",
+		"build:site": "vue-tsc && vite build",
+		"build": "node build/build.mjs && vite build && tsc -p tsconfig.build.json && npm run clean",
+		"build:uniapp": "node build/build.mjs && vite build && tsc -p tsconfig.uniapp.json && npm run clean",
+		"clean": "node build/clean.mjs",
+		"preview": "vite preview"
+	},
+	"peerDependencies": {
+		"axios": "^1.6.0",
+		"fan-utils": "git+https://gitee.com/thiszhong/fan-utils.git"
+	},
+	"devDependencies": {
+		"@dcloudio/types": "^3.4.8",
+		"@types/node": "^20.11.24",
+		"@vitejs/plugin-vue": "^5.0.4",
+		"axios": "^1.6.8",
+		"fan-configs": "git+https://gitee.com/thiszhong/fan-configs.git#v0.0.1",
+		"fan-utils": "git+https://gitee.com/thiszhong/fan-utils.git#v2.0.2",
+		"fs-extra": "^11.2.0",
+		"qs": "~6.9.0",
+		"typescript": "^5.2.2",
+		"unocss": "^0.58.5",
+		"vite": "^5.1.4",
+		"vue": "^3.4.19",
+		"vue-router": "^4.3.0",
+		"vue-tsc": "^1.8.27"
+	}
+}
